@@ -23,6 +23,12 @@ void *s21_insert(const char *src, const char *str, size_t start_index) {
             }
             res[i] = '\0';
         }
+    } else if (start_index == 0 && (!str)) {
+        res = s21_NULL;
+    } else if (src && start_index <= s21_strlen(src)) {
+        s21_size_t common_len = s21_strlen(src);
+        res = (char*)calloc(common_len, sizeof(char));
+        s21_strcpy(res, src);
     }
     return (void*)res;
 }
